@@ -1,0 +1,29 @@
+body{
+    background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
+}
+.nav{
+    background-color: rgb(83, 75, 75);
+    display: flex;
+    margin-right: auto;
+}
+.nav-flex{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.nav-flex > li{
+    padding: 10px;
+    color: aliceblue;
+    margin-right: auto;
+}
+.logo-img{
+    align-items: center;
+    margin-top: 5px;
+}
+.container{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.p-10px{
+    padding: 10px;
+}
