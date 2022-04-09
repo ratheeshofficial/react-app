@@ -21,8 +21,13 @@ export default function Card({img,phone,title,email}) {
     // console.log(elements)
 
     const colors = ['Red','Orange','Purple','Yellow','Green','Blue']
-    const colorName = colors.map((x,index) => `${x} ${index}`)
-    // console.log(colors)
+    const colorName = colors.map((x,index) => {
+        return (
+            <>
+                <p>{`${x} ${index}`}</p>
+            </>
+        )
+    })
     console.log(`${colorName}`)
 
     return (
@@ -35,7 +40,7 @@ export default function Card({img,phone,title,email}) {
                         <p className="card-text mb-0">{phone}</p>
                         <p className="card-text">{email}</p>
                         <a href="#" className="btn btn-primary">Go somewhere</a>
-                        <p>{colorName}</p>
+                        {colorName}
                     </div>
                 </div>
             </div>

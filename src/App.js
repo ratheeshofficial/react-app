@@ -4,11 +4,29 @@ import Header from './Header';
 import Card from './card';
 import Joke from './joke';
 import jokeData from './jokeData'
+import data from './data'
+import CardData from './cardData'
+import Travel from './travel'
 
 function App() {
 
   const jokeElements = jokeData.map(joke =>{
     return <Joke  setup = {joke.setup} punchline = {joke.punchline} />
+  })
+
+  const dataElements = data.map(data =>{
+    return (
+          <CardData 
+            id = {data.id}  data = {data}
+            // title = {data.title} 
+            // rating = {data.stats.rating} 
+            // reviewPoint = {data.stats.reviewCount}
+            // img = {data.coverImg}
+            // openSports = {data.openSports}
+            // price = {data.price}
+            // location = {data.location}
+          />
+      )
   })
 
   return (
@@ -18,7 +36,7 @@ function App() {
           <div className ='row'>
             <Card 
               img = "https://picsum.photos/id/237/300/300"
-              // title = "card 1 Title"
+              title = "card 1 Title"
               phone = {9082552}
               email = 'xyz@mail.com'
             />
@@ -41,6 +59,8 @@ function App() {
               email = 'bbb@mail.com'
             />
             {jokeElements}
+            {dataElements}
+            <Travel />
           </div>
         </div>
     </div>
