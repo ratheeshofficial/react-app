@@ -1,3 +1,4 @@
+import React from 'react'
 import logo from './logo.svg';
 import './App.css';
 import Header from './Header';
@@ -7,8 +8,27 @@ import jokeData from './jokeData'
 import data from './data'
 import CardData from './cardData'
 import Travel from './travel'
+import EventListener from './eventListener'
+import Body from './body'
+import Head from './head'
+import BoxesData from './boxesData'
+import Box from './box'
+import Form from './form'
+import Signup from './signup'
+import UseEffect from './useEffect'
+import WindowTracker from './windowTracker'
+import DarkTheme from './darkTheme'
+import Dice from './dice'
 
 function App() {
+
+  const [box,setBox] = React.useState(BoxesData)
+
+  const square = box.map((boxes)=>{
+    return (
+        <Box key = {boxes.id} on ={boxes.on} />
+    )
+  })
 
   const jokeElements = jokeData.map(joke =>{
     return <Joke  setup = {joke.setup} punchline = {joke.punchline} />
@@ -29,6 +49,8 @@ function App() {
       )
   })
 
+  const [user,setUser] = React.useState('Ratheesh') //passing data to the components
+  
   return (
     <div>
         <Header /> 
@@ -61,6 +83,31 @@ function App() {
             {jokeElements}
             {dataElements}
             <Travel />
+            <EventListener />
+            <Head name = {user} />
+            <Body name = {user} />
+            {square}
+            <Form />
+            <Signup />
+            <UseEffect />
+            <WindowTracker />
+            <DarkTheme />
+            <div className='row d-flex'>
+              <h1>Dice Game</h1>
+              <Dice value = '1' />
+              <Dice />
+              <Dice />
+              <Dice />
+              <Dice />
+              <Dice />
+              <Dice />
+              <Dice />
+              <Dice />
+              <Dice />
+              <Dice />
+              <Dice />
+            </div>
+            
           </div>
         </div>
     </div>
