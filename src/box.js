@@ -5,7 +5,7 @@ export default function Box(props){
 
     const styles = {
         backgroundColor: on ? '#000000' : '#ffffff'
-      }
+    }
 
     function handleBox(){
         setOn(prevOn => {

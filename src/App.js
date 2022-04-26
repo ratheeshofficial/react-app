@@ -19,6 +19,8 @@ import UseEffect from './useEffect'
 import WindowTracker from './windowTracker'
 import DarkTheme from './darkTheme'
 import Dice from './dice'
+// import { nanoid } from 'nanoid'
+import ToDo from './ToDo'
 
 function App() {
 
@@ -51,6 +53,55 @@ function App() {
 
   const [user,setUser] = React.useState('Ratheesh') //passing data to the components
   
+  const [dice,setdice] = React.useState(allNewDice())
+
+  function allNewDice(){
+    const newDice = []
+    for(let i = 0; i < 12; i++){
+        newDice.push({
+          value :Math.trunc(Math.random() * 6),
+          isHeld: true,
+          // id: nanoid(),
+        })
+    }
+    // console.log(newDice)
+    return newDice
+}
+function holdDice(id){
+  console.log(id)
+}
+const diceElements = dice.map((dice) =>{
+  return <Dice id={dice.id} value={dice.value} isHeld = {dice.isHeld} holdDice={()=> holdDice(dice.id)} />
+})
+
+function rollDice(){
+  setdice(allNewDice())
+}
+
+// TO DO list
+
+const [formData,setFormData] = React.useState({
+  note: '',
+})
+
+const [inputValue,setInputValue] = React.useState([])
+
+function handleOnChange(event){
+  const {name,value} = event.target
+  setFormData((prevFormData) =>{
+      return {...prevFormData,[name]: value}
+  })
+}
+console.log({formData})
+
+function handleClick(){
+  setInputValue((prevInputValue) =>{
+      return [...prevInputValue,formData.note]
+  })
+  setFormData({note:''})
+}
+console.log(inputValue)
+
   return (
     <div>
         <Header /> 
@@ -92,22 +143,24 @@ function App() {
             <UseEffect />
             <WindowTracker />
             <DarkTheme />
-            <div className='row d-flex'>
-              <h1>Dice Game</h1>
-              <Dice value = '1' />
-              <Dice />
-              <Dice />
-              <Dice />
-              <Dice />
-              <Dice />
-              <Dice />
-              <Dice />
-              <Dice />
-              <Dice />
-              <Dice />
-              <Dice />
+            <div className='row d-flex justify-content-center text-center'>
+              <h1 className='my-3'>Dice Game</h1>
+              {diceElements}
+              <button className='btn btn-primary w-25 my-3' onClick={rollDice}>Roll</button>
             </div>
-            
+            <div className='row'>
+              <div className='col-lg-4'>
+                <input className='border-0 p-2 bg-secondary bg-gradient my-3'
+                  onChange={handleOnChange} 
+                  type = 'text' 
+                  placeholder ='Enter Notes'
+                  name = 'note'
+                  value = {formData.note}
+                  />
+                <button className='px-3 py-2 border' onClick={handleClick}>+</button>
+                <ToDo value={inputValue} setInputValue={setInputValue} />
+              </div>
+            </div>
           </div>
         </div>
     </div>

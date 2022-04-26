@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function UseEffect(){
     const [starWarsData,setStarWarsData] = React.useState({})
-    const[add,SetAdd] =React.useState(1)
+    const[add,SetAdd] = React.useState(0)
 
 
     function handleAdd(){
@@ -10,17 +10,19 @@ export default function UseEffect(){
             return add + 1
         })
     }
-    React.useState(() => {
+    React.useEffect(() => {
         console.log('component Ran')
-        fetch(`https://swapi.dev/api/people/` + add).then(res => res.json()).then(data => setStarWarsData(data))
+        fetch(`https://swapi.dev/api/people/` + add)
+        .then(res => res.json())
+        .then(data => setStarWarsData(data))
 
-    },[])
+    },[add])
 
     return (
         <div className='mb-3'>
             <pre>{JSON.stringify(starWarsData,null,2)}</pre>
             <p>The Count is {add}</p>
-            <button onClick={handleAdd} >Add</button>
+            <button onClick = {handleAdd} >Add</button>
         </div>
     )
 }
