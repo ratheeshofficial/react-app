@@ -21,6 +21,7 @@ import DarkTheme from './darkTheme'
 import Dice from './dice'
 // import { nanoid } from 'nanoid'
 import ToDo from './ToDo'
+import MovieList from './movieList'
 
 function App() {
 
@@ -79,28 +80,8 @@ function rollDice(){
 }
 
 // TO DO list
-
-const [formData,setFormData] = React.useState({
-  note: '',
-})
-
-const [inputValue,setInputValue] = React.useState([])
-
-function handleOnChange(event){
-  const {name,value} = event.target
-  setFormData((prevFormData) =>{
-      return {...prevFormData,[name]: value}
-  })
-}
-console.log({formData})
-
-function handleClick(){
-  setInputValue((prevInputValue) =>{
-      return [...prevInputValue,formData.note]
-  })
-  setFormData({note:''})
-}
-console.log(inputValue)
+const formData2 = { note: '' }
+formData2.note = 'Hello';
 
   return (
     <div>
@@ -148,18 +129,11 @@ console.log(inputValue)
               {diceElements}
               <button className='btn btn-primary w-25 my-3' onClick={rollDice}>Roll</button>
             </div>
+            
+            <ToDo />
             <div className='row'>
-              <div className='col-lg-4'>
-                <input className='border-0 p-2 bg-secondary bg-gradient my-3'
-                  onChange={handleOnChange} 
-                  type = 'text' 
-                  placeholder ='Enter Notes'
-                  name = 'note'
-                  value = {formData.note}
-                  />
-                <button className='px-3 py-2 border' onClick={handleClick}>+</button>
-                <ToDo value={inputValue} setInputValue={setInputValue} />
-              </div>
+              <MovieList />
+              {/* <input type='search' /> */}
             </div>
           </div>
         </div>
