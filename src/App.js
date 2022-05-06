@@ -31,6 +31,11 @@ import MouseContainer from './pages/mouseContainer'
 import IntervalHookCounter from './pages/intervalHookCounter'
 import DataFetching from './component/DataFetching'
 import ParentComponent from './useCallbackComponent/parentComponent'
+import FocusInput from './useRefComponent/FocusInput'
+import DocTitleOne from './useCustomHooks/DocTitleOne'
+import DocTitleTwo from './useCustomHooks/DocTitletwo'
+import CounterOne from './useCustomHooks/counterOne'
+import CounterTwo from './useCustomHooks/counterTwo'
 
 function App() {
 
@@ -180,6 +185,17 @@ formData2.note = 'Hello';
             <div className='row my-3'>
               <div className='col-lg-3'>
                 <ParentComponent />
+              </div>
+              <div className='col-lg-3'>
+                <h1>useRef </h1>
+                <FocusInput />
+              </div>
+              <div className='col-lg-4'>
+                <h1>useCustomHooks</h1>
+                <DocTitleOne />
+                <DocTitleTwo />
+                <CounterOne />
+                <CounterTwo />
               </div>
             </div>
             
