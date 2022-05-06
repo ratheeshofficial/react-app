@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from './logo.svg';
 import './App.css';
-import Header from './Header';
+import Header from './component/Header';
 import Card from './card';
 import Joke from './joke';
 import jokeData from './jokeData'
@@ -20,8 +20,17 @@ import WindowTracker from './windowTracker'
 import DarkTheme from './darkTheme'
 import Dice from './dice'
 // import { nanoid } from 'nanoid'
-import ToDo from './ToDo'
+import ToDo from './pages/ToDo'
 import MovieList from './movieList'
+import { BrowserRouter, Route,Routes } from 'react-router-dom';
+import Counter from './pages/counter'
+import InputValue from './pages/inputValues'
+import UseStateArray from './pages/useStateArray'
+import DocTitle from './pages/useEffect'
+import MouseContainer from './pages/mouseContainer'
+import IntervalHookCounter from './pages/intervalHookCounter'
+import DataFetching from './component/DataFetching'
+import ParentComponent from './useCallbackComponent/parentComponent'
 
 function App() {
 
@@ -84,10 +93,11 @@ const formData2 = { note: '' }
 formData2.note = 'Hello';
 
   return (
+    <BrowserRouter>
     <div>
         <Header /> 
         <div className ="container my-5">
-          <div className ='row'>
+          <div className ='row mt-5'>
             <Card 
               img = "https://picsum.photos/id/237/300/300"
               title = "card 1 Title"
@@ -124,6 +134,11 @@ formData2.note = 'Hello';
             <UseEffect />
             <WindowTracker />
             <DarkTheme />
+            <Routes>
+              <Route path = '/' element = {<Card />} exact />
+              <Route path = '/todo' element = {<ToDo />} />
+              <Route path = '/form' element = {<Form />} />
+            </Routes>
             <div className='row d-flex justify-content-center text-center'>
               <h1 className='my-3'>Dice Game</h1>
               {diceElements}
@@ -135,9 +150,44 @@ formData2.note = 'Hello';
               <MovieList />
               {/* <input type='search' /> */}
             </div>
+            <div className='row my-3'>
+              <div className='col-lg-4'>
+                 <Counter />
+              </div>
+              <div className='col-lg-4'>
+                <InputValue />
+              </div>
+              <div className='col-lg-4'>
+              <UseStateArray />
+              </div>
+            </div>
+            <div className='row my-3' >
+              <div className='col-lg-4'>
+                <DocTitle />
+              </div>
+              <div className='col-lg-4'>
+                <MouseContainer />
+              </div>
+              <div className='col-lg-4'>
+                <IntervalHookCounter />
+              </div>
+            </div>
+            <div className='row my-3'>
+              <div className='col-lg-8'>
+                <DataFetching />
+              </div>
+            </div>
+            <div className='row my-3'>
+              <div className='col-lg-3'>
+                <ParentComponent />
+              </div>
+            </div>
+            
           </div>
         </div>
     </div>
+    
+    </BrowserRouter>
   );
 }
 
