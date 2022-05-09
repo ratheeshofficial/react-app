@@ -36,6 +36,8 @@ import DocTitleOne from './useCustomHooks/DocTitleOne'
 import DocTitleTwo from './useCustomHooks/DocTitletwo'
 import CounterOne from './useCustomHooks/counterOne'
 import CounterTwo from './useCustomHooks/counterTwo'
+import UserForm from './useCustomHooks/userForm'
+import FetchMovieData from './MovieAPI/fetchMovieData'
 
 function App() {
 
@@ -196,6 +198,12 @@ formData2.note = 'Hello';
                 <DocTitleTwo />
                 <CounterOne />
                 <CounterTwo />
+                <UserForm />
+              </div>
+            </div>
+            <div className='row'>
+              <div className='col-lg-12'>
+                <FetchMovieData />
               </div>
             </div>
             
